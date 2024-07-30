@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #34495e;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #1abc9c;
+        }
+        .lead {
+            font-size: 1.25em;
+            margin-bottom: 40px;
+        }
+        .btn-primary {
+            background-color: #1abc9c;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 5px;
+        }
+        .btn-primary:hover {
+            background-color: #16a085;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Selamat Datang di Library App</h1>
+        <p class="lead">
+            Aplikasi Perpustakaan ini memungkinkan Anda untuk mengelola koleksi buku secara mudah dan efisien. Anda dapat menambahkan, mengedit, dan menghapus buku, serta mengelola kategori buku untuk memastikan semua koleksi terorganisir dengan baik.
+        </p>
+        <a href="{{ url_for('view_all_books') }}" class="btn btn-primary">Lihat Semua Buku</a>
+    </div>
+</body>
+</html>

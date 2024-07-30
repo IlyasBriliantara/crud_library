@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Kategori</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+        }
+        .container {
+            background-color: #34495e;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #1abc9c;
+            text-align: center;
+        }
+        table {
+            background-color: #34495e;
+            color: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        .table thead th {
+            background-color: #1abc9c;
+            color: #ecf0f1;
+            padding: 10px;
+            border: none;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .table-striped tbody tr:nth-of-type(even) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .table td {
+            padding: 10px;
+            border-top: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .btn-primary {
+            background-color: #1abc9c;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+        }
+        .btn-primary:hover {
+            background-color: #16a085;
+        }
+        .btn-warning {
+            background-color: #f39c12;
+            border: none;
+            padding: 5px 10px;
+            font-size: 0.875em;
+            border-radius: 5px;
+        }
+        .btn-warning:hover {
+            background-color: #e67e22;
+        }
+        .btn-danger {
+            background-color: #e74c3c;
+            border: none;
+            padding: 5px 10px;
+            font-size: 0.875em;
+            border-radius: 5px;
+        }
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        .btn-link {
+            color: #1abc9c;
+        }
+        .btn-link:hover {
+            color: #16a085;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Edit Kategori</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Kategori</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in categories %}
+                <tr>
+                    <td>{{ category.name }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_category', id=category._id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{{ url_for('delete_category', id=category._id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="action-buttons">
+            <a href="{{ url_for('add_category') }}" class="btn btn-primary">Tambah Kategori</a>
+            <a href="{{ url_for('view_all_books') }}" class="btn btn-link mt-3">Kembali</a>
+        </div>
+    </div>
+</body>
+</html>

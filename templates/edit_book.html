@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Buku</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+        }
+        .container {
+            background-color: #34495e;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #1abc9c;
+            text-align: center;
+        }
+        .form-group label {
+            color: #ecf0f1;
+        }
+        .form-control {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            border: 1px solid #1abc9c;
+        }
+        .form-control:focus {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            border: 1px solid #1abc9c;
+            box-shadow: none;
+        }
+        .btn-success {
+            background-color: #1abc9c;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+        }
+        .btn-success:hover {
+            background-color: #16a085;
+        }
+        .btn-link {
+            color: #1abc9c;
+        }
+        .btn-link:hover {
+            color: #16a085;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Edit Buku</h1>
+        <form action="{{ url_for('edit_book', id=book._id) }}" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="title">Judul:</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ book.title }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="author">Penulis:</label>
+                    <input type="text" class="form-control" id="author" name="author" value="{{ book.author }}" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="category">Kategori:</label>
+                    <select class="form-control" id="category" name="category" required>
+                        {% for category in categories %}
+                            <option value="{{ category._id }}" {% if category._id == book.category_id %}selected{% endif %}>{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="publisher">Penerbit:</label>
+                    <input type="text" class="form-control" id="publisher" name="publisher" value="{{ book.publisher }}" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="release_date">Tanggal Rilis:</label>
+                    <input type="date" class="form-control" id="release_date" name="release_date" value="{{ book.release_date }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="number_of_pages">Banyak Halaman:</label>
+                    <input type="number" class="form-control" id="number_of_pages" name="number_of_pages" value="{{ book.number_of_pages }}" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Perbarui</button>
+        </form>
+        <a href="{{ url_for('list_books') }}" class="btn btn-link mt-3">Kembali</a>
+    </div>
+</body>
+</html>

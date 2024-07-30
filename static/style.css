@@ -1,0 +1,45 @@
+body {
+    background-color: #121212; /* Warna latar belakang hitam */
+    color: #ffffff; /* Warna teks putih */
+}
+
+.container {
+    background-color: #1e1e1e; /* Warna abu-abu gelap untuk container */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff; /* Warna judul putih */
+}
+
+.btn-primary {
+    background-color: #4caf50; /* Hijau cerah */
+    border-color: #4caf50; /* Hijau cerah */
+}
+
+.btn-primary:hover {
+    background-color: #45a049; /* Warna hijau cerah lebih gelap saat hover */
+    border-color: #45a049; /* Warna hijau cerah lebih gelap saat hover */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #2c2c2c; /* Baris ganjil abu-abu gelap */
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #1e1e1e; /* Baris genap abu-abu lebih terang */
+}
+
+.table td, .table th {
+    color: #ffffff; /* Warna teks putih untuk isi tabel */
+}
+
+a.btn-link {
+    color: #4caf50; /* Warna teks hijau cerah */
+}
+
+a.btn-link:hover {
+    color: #388e3c; /* Warna teks hijau cerah lebih gelap saat hover */
+}
